@@ -1,4 +1,4 @@
-package Models;
+package AllArrayTypeModels;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -10,7 +10,7 @@ public class TwoDimensionalArrayModel {
         int rows = sc.nextInt();
         System.out.println("Enter no of columns :");
         int columns = sc.nextInt();
-        int arr[][] = new int[rows][columns];
+        int[][] arr = new int[rows][columns];
 
         System.out.println("Enter elements in the array : ");
         for(int i=0;i<rows;i++){

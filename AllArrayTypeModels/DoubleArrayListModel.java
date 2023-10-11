@@ -1,4 +1,4 @@
-package Models;
+package AllArrayTypeModels;
 
 import java.util.ArrayList;
 import java.util.Scanner;
