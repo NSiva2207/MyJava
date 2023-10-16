@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -17,6 +18,7 @@ public class Main {
         for(int i=0;i<n;i++){
             car.add(new Car(sc.next(),sc.nextInt(),sc.next()));
         }
+        // Declarative approach
         System.out.println(car.stream().filter(c -> c.getPrice() > 1100000).collect(Collectors.toList()));
         System.out.println(car.stream()
                 .map(c -> {
@@ -24,6 +26,8 @@ public class Main {
                     return carDTO;
                 }).collect(Collectors.toList())
         );
+
+        //Function
         Function<Car,CarDTO> carCarDTOFunction = c ->
                 new CarDTO(
                 c.getBrand(),
@@ -33,5 +37,17 @@ public class Main {
                 .map(CarDTO :: map).collect(Collectors.toList());
         dto.forEach(System.out :: println);
         System.out.println(car.stream().map(Car::getPrice).max(Integer :: compare).get());
+
+        //Predicate
+        Predicate<Car> predicate = c -> c.getBrand().equals("Maruthi");
+        List<CarDTO> carDTO2 = car.stream()
+                .filter(predicate)
+                .map(c ->new CarDTO(
+                        c.getBrand(),
+                        c.getPrice()
+                ))
+                .collect(Collectors.toList());
+        System.out.println("Predicate "+ carDTO2);
+
     }
 }
